@@ -1,16 +1,19 @@
-import Image from 'next/image'
 import PersonalDetails from './components/PersonalDetails'
 import EmploymentHistory from './components/EmploymentHistory'
+import Education from './components/Education'
 
 export default function Home() {
   return (
-    <main className="flex">
-      <div className="flex flex-col w-1/2 min-h-screen p-10">
-        <PersonalDetails />
-        <EmploymentHistory />
+    <main className="flex h-screen">
+      <div className="flex flex-col w-1/2 overflow-y-auto">
+        <div className="flex-1 p-12">
+          <PersonalDetails />
+          <EmploymentHistory />
+          <Education />
+        </div>
       </div>
-      <div className="flex flex-col bg-green-100 w-1/2 min-h-screen p-10">
-        two
+      <div className="bg-gray-800 w-1/2">
+        <div className="h-full p-10">two</div>
       </div>
     </main>
   )
