@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function PersonalDetails() {
   return (
-    <div className="flex flex-col w-1/2 min-h-screen p-10">
+    <div className="flex flex-col">
       <h2 className="text-2xl font-bold p-1">Personal Details</h2>
       <div className="flex pt-1">
         <div className="p-2 w-1/2">
@@ -12,7 +12,7 @@ export default function PersonalDetails() {
             </label>
             <input
               type="text"
-              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-2.5"
+              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder="e.g. Charles"
             />
           </div>
@@ -24,7 +24,7 @@ export default function PersonalDetails() {
             </label>
             <input
               type="text"
-              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-2.5"
+              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder="e.g. Richards"
             />
           </div>
@@ -38,7 +38,7 @@ export default function PersonalDetails() {
             </label>
             <input
               type="email"
-              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-2.5"
+              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder=""
             />
           </div>
@@ -50,7 +50,7 @@ export default function PersonalDetails() {
             </label>
             <input
               type="text"
-              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-2.5"
+              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder=""
             />
           </div>
@@ -67,7 +67,7 @@ export default function PersonalDetails() {
           </label>
           <textarea
             rows={6}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"
+            className="block p-3 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"
             placeholder="Your professional summary..."
           />
         </div>
