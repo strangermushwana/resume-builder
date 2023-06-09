@@ -1,7 +1,10 @@
+'use client'
+
 import PersonalDetails from './components/PersonalDetails'
 import EmploymentHistory from './components/EmploymentHistory'
 import Education from './components/Education'
 import Resume from './components/Resume'
+import React from 'react'
 
 export default function Home() {
   return (

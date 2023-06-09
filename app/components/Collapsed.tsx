@@ -38,10 +38,10 @@ export default function Collapsed() {
                   <path
                     fill="none"
                     stroke="#d8d3d3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                     d="m20.5 11.5-6 6-6-6"
                     className="colorStroke000 svgStroke group-hover:stroke-yellow-700"
                   ></path>
