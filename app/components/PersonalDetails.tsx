@@ -66,7 +66,7 @@ export default function PersonalDetails() {
             <input
               type="text"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-              placeholder="e.g. Charles"
+              placeholder="e.g. Stranger"
             />
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function PersonalDetails() {
             <input
               type="text"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-              placeholder="e.g. Manny"
+              placeholder="e.g. Mushwana"
             />
           </div>
         </div>
@@ -135,7 +135,6 @@ export default function PersonalDetails() {
           </div>
         </div>
       </div>
-      {/*  */}
       <h2 className="text-2xl font-bold mt-6 p-1">Summary</h2>
       <div className="py-1">
         <div className="p-1">

@@ -16,7 +16,7 @@ export default function EmploymentHistory() {
         your achievements, if possible - use numbers/facts (Achieved X, measured
         by Y, by doing Z).
       </label>
-      <div onClick={showFull} className="mt-8">
+      <div onClick={showFull} className="mt-2">
         {!show && <Collapsed />}
       </div>
       {show && (

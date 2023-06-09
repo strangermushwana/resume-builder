@@ -23,9 +23,9 @@ export default function UpArrow() {
             <path
               fill="none"
               stroke="#d8d3d3"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M5.306 15.694a1.043 1.043 0 0 0 1.476 0L12 10.47l5.218 5.224a1.043 1.043 0 0 0 1.476 0 1.046 1.046 0 0 0 0-1.478l-5.904-5.91a1.04 1.04 0 0 0-.79-.305 1.04 1.04 0 0 0-.79.305l-5.904 5.91a1.046 1.046 0 0 0 0 1.478Z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
               className="color000 svgShape group-hover:stroke-yellow-700"
             ></path>
           </svg>
