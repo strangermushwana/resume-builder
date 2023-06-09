@@ -5,6 +5,7 @@ import EmploymentHistory from './components/EmploymentHistory'
 import Education from './components/Education'
 import Resume from './components/Resume'
 import React from 'react'
+import Skills from './components/Skills'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
           <PersonalDetails />
           <EmploymentHistory />
           <Education />
+          <Skills />
         </div>
       </div>
       <div className="bg-gray-500 w-1/2">

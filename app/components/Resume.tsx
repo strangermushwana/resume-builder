@@ -78,6 +78,8 @@ export default function Resume() {
         <div className="bg-[#082A4D] w-[34%] text-white px-6 pt-[7rem] rounded-r-md">
           <h2 className="font-semibold text-xs font-mono">Details</h2>
           <div className="font-sans">
+            <div className="text-[0.4rem] my-1">Cape Town</div>
+            <div className="text-[0.4rem] my-1">South Africa</div>
             <div className="text-[0.4rem] my-1">0734567954</div>
             <div className="text-[0.4rem] mb-1 underline">
               stranger@apples.com
