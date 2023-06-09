@@ -1,27 +1,23 @@
 import React from 'react'
 
-export default function Resume() {
+export default function Resume({ personalDetails }) {
+  console.log(personalDetails)
   return (
     <div className="flex flex-col items-center font-mono justify-center h-full px-[7.5rem] py-6">
       <div className="flex shadow-md w-full h-full bg-white rounded-md">
         <div className="w-[70%] px-6 py-8">
           <h2 className="text-xl font-bold mt-2 p-1 text-gray-800">
-            Stranger Mushwana
+            {personalDetails?.firstName} {personalDetails?.lastName}
           </h2>
           <div className="text-[0.5rem] pl-2 text-gray-600 uppercase">
-            National Deploma(Soil Science)
+            {personalDetails?.jobTitle}
           </div>
           <div className="font-sans mt-3 p-2">
             <h2 className="font-semibold text-xs my-1 font-mono text-gray-800">
               Profile
             </h2>
             <div className="text-[0.4rem] text-gray-700">
-              Highly focused and dedicated Animal Health Technician with a
-              strong eye for detail and excellent customer service. Extremely
-              knowledgeable in a wide variety of animal features and behavior
-              patterns. Outstanding knowledge of animal medicine to diagnose and
-              treat animal injuries and diseases. Adept at handling difficult
-              and potentially dangerous animals with sensitivity and efficiency
+              {personalDetails?.professionalSummary}
             </div>
           </div>
           <div className="font-sans p-2">
@@ -78,11 +74,13 @@ export default function Resume() {
         <div className="bg-[#082A4D] w-[34%] text-white px-6 pt-[7rem] rounded-r-md">
           <h2 className="font-semibold text-xs font-mono">Details</h2>
           <div className="font-sans">
-            <div className="text-[0.4rem] my-1">Cape Town</div>
-            <div className="text-[0.4rem] my-1">South Africa</div>
-            <div className="text-[0.4rem] my-1">0734567954</div>
+            <div className="text-[0.4rem] my-1">{personalDetails?.city}</div>
+            <div className="text-[0.4rem] my-1">{personalDetails?.country}</div>
+            <div className="text-[0.4rem] my-1">
+              {personalDetails?.phoneNumber}
+            </div>
             <div className="text-[0.4rem] mb-1 underline">
-              stranger@apples.com
+              {personalDetails?.email}
             </div>
             <div className="mt-8">
               <h2 className="font-semibold text-xs font-mono">Skills</h2>

@@ -1,12 +1,32 @@
 import React, { useState } from 'react'
 import ImageUpload from '../theme/ImageUpload'
 
-export default function PersonalDetails() {
+export default function PersonalDetails({ personalInfo }) {
   const [open, setOpen] = useState(false)
+  const [personalInformation, setPersonalInformation] = useState({
+    jobTitle: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    country: '',
+    city: '',
+    professionalSummary: '',
+  })
 
   function openFn(): void {
     setOpen(() => !open)
   }
+
+  personalInfo(personalInformation)
+
+  const handleUserDetailChange = (e: { target: { name: any; value: any } }) => {
+    setPersonalInformation((info) => ({
+      ...info,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
   return (
     <div className="flex flex-col">
       <h2 className="text-2xl font-bold p-1">Personal Details</h2>
@@ -18,6 +38,8 @@ export default function PersonalDetails() {
             </label>
             <input
               type="text"
+              onChange={handleUserDetailChange}
+              name="jobTitle"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder="e.g. Software Developer"
             />
@@ -65,6 +87,8 @@ export default function PersonalDetails() {
             </label>
             <input
               type="text"
+              onChange={handleUserDetailChange}
+              name="firstName"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder="e.g. Stranger"
             />
@@ -77,6 +101,8 @@ export default function PersonalDetails() {
             </label>
             <input
               type="text"
+              onChange={handleUserDetailChange}
+              name="lastName"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder="e.g. Mushwana"
             />
@@ -90,6 +116,8 @@ export default function PersonalDetails() {
               Email
             </label>
             <input
+              onChange={handleUserDetailChange}
+              name="email"
               type="email"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder=""
@@ -103,6 +131,8 @@ export default function PersonalDetails() {
             </label>
             <input
               type="text"
+              onChange={handleUserDetailChange}
+              name="phoneNumber"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder=""
             />
@@ -117,6 +147,8 @@ export default function PersonalDetails() {
             </label>
             <input
               type="text"
+              onChange={handleUserDetailChange}
+              name="country"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder=""
             />
@@ -129,6 +161,8 @@ export default function PersonalDetails() {
             </label>
             <input
               type="text"
+              onChange={handleUserDetailChange}
+              name="city"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
               placeholder=""
             />
@@ -144,6 +178,8 @@ export default function PersonalDetails() {
             achievements, best qualities and skills.
           </label>
           <textarea
+            onChange={handleUserDetailChange}
+            name="professionalSummary"
             style={{ resize: 'none' }}
             rows={6}
             className="block p-3 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"
