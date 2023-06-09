@@ -75,16 +75,46 @@ export default function Resume() {
             </div>
           </div>
         </div>
-        <div className="bg-gray-900 w-[34%] text-white p-5 rounded-r-md"></div>
+        <div className="bg-[#082A4D] w-[34%] text-white px-6 pt-[7rem] rounded-r-md">
+          <h2 className="font-semibold text-xs font-mono">Details</h2>
+          <div className="font-sans">
+            <div className="text-[0.4rem] my-1">0734567954</div>
+            <div className="text-[0.4rem] mb-1 underline">
+              stranger@apples.com
+            </div>
+            <div className="mt-8">
+              <h2 className="font-semibold text-xs font-mono">Skills</h2>
+              <div className="text-[0.4rem] my-1">
+                Able to Operate Under Pressure
+                <div className="w-full p-[0.1rem] mt-[0.1rem] bg-white"></div>
+              </div>
+              <div className="text-[0.4rem] my-1">
+                Effective Time Management
+                <div className="w-full p-[0.1rem] mt-[0.1rem] bg-white"></div>
+              </div>
+              <div className="text-[0.4rem] my-1">
+                Team Player
+                <div className="w-full p-[0.1rem] mt-[0.1rem] bg-white"></div>
+              </div>
+              <div className="text-[0.4rem] my-1">
+                Adaptablity
+                <div className="w-full p-[0.1rem] mt-[0.1rem] bg-white"></div>
+              </div>
+              <div className="text-[0.4rem] my-1">
+                Ability to Multitask
+                <div className="w-full p-[0.1rem] mt-[0.1rem] bg-white"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="flex w-full px-2 my-3 text-white items-center ml-auto">
-        {/* <div className="text-sm">Select Template</div> */}
-        <a
-          href="#"
-          className="px-10 rounded-md py-3 bg-red-300 hover:bg-red-500 text-sm"
-        >
+      <div className="flex space-x-2 px-2 my-3 text-white items-center">
+        <button className="px-10 rounded-md py-3 bg-red-300 hover:bg-red-500 text-sm">
+          Preview
+        </button>
+        <button className="px-10 rounded-md py-3 bg-green-500 hover:bg-green-300 text-sm">
           Download
-        </a>
+        </button>
       </div>
     </div>
   )

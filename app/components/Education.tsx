@@ -77,6 +77,7 @@ export default function Education() {
                 Description
               </label>
               <textarea
+                style={{ resize: 'none' }}
                 rows={10}
                 className="block p-3 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"
                 placeholder="e.g. Graduated under 30 seconds..."
