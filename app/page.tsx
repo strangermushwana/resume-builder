@@ -1,6 +1,7 @@
 import PersonalDetails from './components/PersonalDetails'
 import EmploymentHistory from './components/EmploymentHistory'
 import Education from './components/Education'
+import Resume from './components/Resume'
 
 export default function Home() {
   return (
@@ -12,8 +13,8 @@ export default function Home() {
           <Education />
         </div>
       </div>
-      <div className="bg-gray-800 w-1/2">
-        <div className="h-full p-10">two</div>
+      <div className="bg-gray-500 w-1/2">
+        <Resume />
       </div>
     </main>
   )

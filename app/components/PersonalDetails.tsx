@@ -8,6 +8,32 @@ export default function PersonalDetails() {
         <div className="p-2 w-1/2">
           <div className="p-1">
             <label className="block mb-2 text-sm font-md text-gray-500">
+              Wanted Job Title
+            </label>
+            <input
+              type="text"
+              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+              placeholder="e.g. Software Developer"
+            />
+          </div>
+        </div>
+        {/* <div className="p-2 w-1/2">
+          <div className="p-1">
+            <label className="block mb-2 text-sm font-md text-gray-500">
+              Last Name
+            </label>
+            <input
+              type="text"
+              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+              placeholder="e.g. Richards"
+            />
+          </div>
+        </div> */}
+      </div>
+      <div className="flex">
+        <div className="p-2 w-1/2">
+          <div className="p-1">
+            <label className="block mb-2 text-sm font-md text-gray-500">
               First Name
             </label>
             <input
@@ -25,7 +51,7 @@ export default function PersonalDetails() {
             <input
               type="text"
               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-              placeholder="e.g. Richards"
+              placeholder="e.g. Manny"
             />
           </div>
         </div>
@@ -47,6 +73,32 @@ export default function PersonalDetails() {
           <div className="p-1">
             <label className="block mb-2 text-sm font-md text-gray-500">
               Phone Number
+            </label>
+            <input
+              type="text"
+              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+              placeholder=""
+            />
+          </div>
+        </div>
+      </div>
+      <div className="flex">
+        <div className="p-2 w-1/2">
+          <div className="p-1">
+            <label className="block mb-2 text-sm font-md text-gray-500">
+              Country
+            </label>
+            <input
+              type="text"
+              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <div className="p-2 w-1/2">
+          <div className="p-1">
+            <label className="block mb-2 text-sm font-md text-gray-500">
+              City
             </label>
             <input
               type="text"
