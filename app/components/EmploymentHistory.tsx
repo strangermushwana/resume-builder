@@ -1,4 +1,5 @@
 import React from 'react'
+import Collapsed from './Collapsed'
 
 export default function EmploymentHistory() {
   return (
@@ -9,7 +10,8 @@ export default function EmploymentHistory() {
         your achievements, if possible - use numbers/facts (Achieved X, measured
         by Y, by doing Z).
       </label>
-      <div className="p-2 mt-10 shadow-md border-t rounded-md">
+      <Collapsed />
+      <div className="hidden p-2 mt-10 shadow-md border-t rounded-md">
         <div className="flex">
           <div className="p-2 w-1/2">
             <div className="p-1">
