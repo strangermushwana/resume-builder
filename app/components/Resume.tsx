@@ -1,9 +1,10 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function Resume({ personalDetails }) {
   console.log(personalDetails)
   return (
-    <div className="flex flex-col items-center font-mono justify-center h-full px-[7.5rem] py-6">
+    <div className="flex flex-col items-center font-mono justify-center h-full px-[7.5rem] pb-6">
       <div className="flex shadow-md w-full h-full bg-white rounded-md">
         <div className="w-[70%] px-6 py-8">
           <h2 className="text-xl font-bold mt-2 p-1 text-gray-800">
@@ -109,9 +110,12 @@ export default function Resume({ personalDetails }) {
         </div>
       </div>
       <div className="flex space-x-2 px-2 my-3 text-white items-center">
-        <button className="px-10 rounded-md py-3 bg-red-300 hover:bg-red-500 text-sm">
+        <Link
+          href="/resume/JiGh_31GA20JabpZBfa"
+          className="px-10 rounded-md py-3 bg-red-300 hover:bg-red-500 text-sm"
+        >
           Preview
-        </button>
+        </Link>
         <button className="px-10 rounded-md py-3 bg-green-500 hover:bg-green-300 text-sm">
           Download
         </button>
