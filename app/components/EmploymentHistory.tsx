@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Collapsed from './Collapsed'
 import UpArrow from './UI/UpArrow'
 import { IEmploymentHistory } from '../models/EmploymentHistory'
+import Calendar from './UI/calendar/Calendar'
 
 interface Props {
   employmentData: (data: IEmploymentHistory) => void
@@ -9,6 +10,7 @@ interface Props {
 
 export default function EmploymentHistory({ employmentData }: Props) {
   const [show, setShow] = useState(false)
+  const [calendarPosition, setCalendarPosition] = useState('')
   const [employmentHistory, setEmploymentHistory] = useState({
     jobTitle: '',
     employer: '',
@@ -43,6 +45,20 @@ export default function EmploymentHistory({ employmentData }: Props) {
           '(Not specified)'
   }
   const header = constructHeader()
+
+  const handleShowCalendar = (e: any) => {
+    if (e?.target?.name === 'startDate') {
+      setCalendarPosition('startDate')
+      return
+    }
+    if (e?.target?.name === 'endDate') {
+      setCalendarPosition('endDate')
+    }
+  }
+
+  const handleInputBlur = () => {
+    setCalendarPosition('')
+  }
 
   return (
     <div className="flex flex-col mt-10">
@@ -108,7 +124,7 @@ export default function EmploymentHistory({ employmentData }: Props) {
               </div>
             </div>
             <div className="flex">
-              <div className="p-2 w-1/2">
+              <div className="p-2 w-1/2 relative">
                 <label className="block px-1 mb-2 text-sm font-md text-gray-500">
                   Start & End Date
                 </label>
@@ -117,6 +133,8 @@ export default function EmploymentHistory({ employmentData }: Props) {
                     <input
                       name="startDate"
                       onChange={handleEmploymentHistoryChange}
+                      onFocus={handleShowCalendar}
+                      onBlur={handleInputBlur}
                       type="text"
                       className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                       placeholder="MM/YY"
@@ -126,11 +144,24 @@ export default function EmploymentHistory({ employmentData }: Props) {
                     <input
                       name="endDate"
                       onChange={handleEmploymentHistoryChange}
+                      onFocus={handleShowCalendar}
+                      onBlur={handleInputBlur}
                       type="text"
                       className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                       placeholder="MM/YY"
                     />
                   </div>
+                </div>
+                <div
+                  className={
+                    calendarPosition === ''
+                      ? 'hidden'
+                      : calendarPosition === 'endDate'
+                      ? 'absolute left-12 bg-white mt-1'
+                      : 'absolute bg-white mt-1'
+                  }
+                >
+                  <Calendar />
                 </div>
               </div>
               <div className="p-2 w-1/2">
