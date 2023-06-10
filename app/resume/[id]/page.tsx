@@ -21,8 +21,8 @@ export default function EditResume() {
       <div
         className={
           active
-            ? 'sticky top-0 text-white bg-gray-800 py-4'
-            : 'sticky top-0 text-gray-800 py-4'
+            ? 'sticky top-0 text-white bg-gray-800 py-5'
+            : 'sticky top-0 text-gray-800 py-5'
         }
       >
         <div className="flex items-center justify-between max-w-[1096px] px-[7.5rem] mx-auto">
