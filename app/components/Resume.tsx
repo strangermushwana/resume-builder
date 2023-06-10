@@ -17,7 +17,7 @@ export default function Resume({ personalDetails }) {
             <h2 className="font-semibold text-xs my-1 font-mono text-gray-800">
               Profile
             </h2>
-            <div className="text-[0.4rem] text-gray-700">
+            <div className="text-[7.5px] text-gray-700">
               {personalDetails?.professionalSummary}
             </div>
           </div>
@@ -32,7 +32,7 @@ export default function Resume({ personalDetails }) {
               <div className="text-[0.4rem] font-thin mb-1 text-gray-600 uppercase">
                 May 2020 - June 2020
               </div>
-              <div className="text-[0.4rem] font-[3rem] text-gray-900">
+              <div className="text-[7.5px] font-[3rem] text-gray-900">
                 Assisted vet with exams, diagnostic tests, surgery, treatment
                 procedures. performed lab tests and kept medical records
               </div>
@@ -45,7 +45,7 @@ export default function Resume({ personalDetails }) {
               <div className="text-[0.4rem] font-thin mb-1 text-gray-600 uppercase">
                 March 2022 - June 2022
               </div>
-              <div className="text-[0.4rem] font-[3rem] text-gray-900">
+              <div className="text-[7.5px] font-[3rem] text-gray-900">
                 I provided support to the farm by performing various tasks.
                 These included vaccinating chickens, conducting treatment
                 procedures, weighing eggs, and diligently inspecting them for
@@ -64,7 +64,7 @@ export default function Resume({ personalDetails }) {
               <div className="text-[0.4rem] font-thin mb-1 text-gray-600 uppercase">
                 February 2019 - December 2021
               </div>
-              <div className="text-[0.4rem] font-[3rem] text-gray-900">
+              <div className="text-[7.5px] font-[3rem] text-gray-900">
                 Gained the required foundation in all aspects of animal diseases
                 and health, including anatomy and physiology, nutrition,
                 pharmacology and toxicology

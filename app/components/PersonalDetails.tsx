@@ -103,7 +103,7 @@ export default function PersonalDetails({ personalInfo }) {
               type="text"
               onChange={handleUserDetailChange}
               name="lastName"
-              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+              className="text-black bg-gray-100 text- outline-none focus:border-b-2 block w-full p-3"
               placeholder="e.g. Mushwana"
             />
           </div>
