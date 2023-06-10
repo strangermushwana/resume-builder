@@ -1,10 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 export default function Landing() {
   return (
     <>
-      <div className="h-screen bg-gray-100 overflow-hidden">
+      <div className="h-fit bg-gray-100 overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-6xl font-bold mx-auto text-center leading-[65px] pt-24 max-w-3xl">
             Only 2% of resumes make it past the first round. Be in the top 2%
@@ -14,9 +15,11 @@ export default function Landing() {
             ‘resume rules’ employers look for. Easy to use and done within
             minutes - try now for free!
           </div>
-          <div className="bg-black text-white cursor-pointer py-5 px-14 w-fit mx-auto my-6">
-            Create My Resume
-          </div>
+          <Link href="/bulder">
+            <div className="bg-black text-white cursor-pointer py-5 px-14 w-fit mx-auto my-6">
+              Create My Resume
+            </div>
+          </Link>
           <div className="max-w-3xl mx-auto mt-10 overflow-hidden">
             <Image
               alt="Picture of Resume"

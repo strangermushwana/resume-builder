@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 export default function Navbar() {
@@ -33,7 +34,10 @@ export default function Navbar() {
               : 'font-bold text-lg text-gray-700 uppercase cursor-pointer'
           }
         >
-          zaresume<span className="text-red-400 font-semibold text-2xl">.</span>
+          <Link href="/">
+            zaresume
+            <span className="text-red-400 font-semibold text-2xl">.</span>
+          </Link>
         </div>
         <div className="flex space-x-6 justify-center items-center">
           <div className="cursor-pointer uppercase text-sm hover:text-gray-900">

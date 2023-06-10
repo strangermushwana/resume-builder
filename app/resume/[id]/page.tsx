@@ -27,7 +27,7 @@ export default function EditResume() {
       >
         <div className="flex items-center justify-between max-w-[1096px] px-[7.5rem] mx-auto">
           <div className="text-[1rem] cursor-pointer font-semibold hover:underline p-2 mt-3">
-            <Link href="/">Back to Editor</Link>
+            <Link href="/bulder">Back to Editor</Link>
           </div>
           <button className="px-10 rounded-md py-3 text-white bg-green-800 hover:bg-green-700 text-sm">
             Download PDF
