@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import ImageUpload from '../theme/ImageUpload'
+import { IPersonalInformation } from '../models/PersonalInformation'
 
-export default function PersonalDetails({ personalInfo }) {
+interface Props {
+  personalInfo: (data: IPersonalInformation) => void
+}
+
+export default function PersonalDetails({ personalInfo }: Props) {
   const [open, setOpen] = useState(false)
   const [personalInformation, setPersonalInformation] = useState({
     jobTitle: '',

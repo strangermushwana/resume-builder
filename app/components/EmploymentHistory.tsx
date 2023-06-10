@@ -1,13 +1,38 @@
 import React, { useState } from 'react'
 import Collapsed from './Collapsed'
 import UpArrow from './UI/UpArrow'
+import { IEmploymentHistory } from '../models/EmploymentHistory'
 
-export default function EmploymentHistory() {
+interface Props {
+  employmentData: (data: IEmploymentHistory) => void
+}
+
+export default function EmploymentHistory({ employmentData }: Props) {
   const [show, setShow] = useState(false)
+  const [employmentHistory, setEmploymentHistory] = useState({
+    jobTitle: '',
+    employer: '',
+    startDate: '',
+    endDate: '',
+    city: '',
+    description: '',
+  })
 
   function showFull() {
     setShow(() => !show)
   }
+
+  employmentData(employmentHistory)
+
+  const handleEmploymentHistoryChange = (e: {
+    target: { name: any; value: any }
+  }) => {
+    setEmploymentHistory((data) => ({
+      ...data,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
   return (
     <div className="flex flex-col mt-10">
       <h2 className="text-2xl font-bold p-1">Employment History</h2>
@@ -48,6 +73,8 @@ export default function EmploymentHistory() {
                     Job Title
                   </label>
                   <input
+                    name="jobTitle"
+                    onChange={handleEmploymentHistoryChange}
                     type="text"
                     className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                     placeholder="e.g. Charles"
@@ -60,6 +87,8 @@ export default function EmploymentHistory() {
                     Employer
                   </label>
                   <input
+                    name="employer"
+                    onChange={handleEmploymentHistoryChange}
                     type="text"
                     className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                     placeholder="e.g. Charles"
@@ -75,6 +104,8 @@ export default function EmploymentHistory() {
                 <div className="flex space-x-3 p-1">
                   <div className="w-1/2">
                     <input
+                      name="startDate"
+                      onChange={handleEmploymentHistoryChange}
                       type="text"
                       className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                       placeholder="MM/YY"
@@ -82,6 +113,8 @@ export default function EmploymentHistory() {
                   </div>
                   <div className="w-1/2">
                     <input
+                      name="endDate"
+                      onChange={handleEmploymentHistoryChange}
                       type="text"
                       className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                       placeholder="MM/YY"
@@ -95,6 +128,8 @@ export default function EmploymentHistory() {
                     City
                   </label>
                   <input
+                    name="city"
+                    onChange={handleEmploymentHistoryChange}
                     type="text"
                     className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                     placeholder="e.g. Charles"
@@ -109,6 +144,8 @@ export default function EmploymentHistory() {
                     Description
                   </label>
                   <textarea
+                    name="description"
+                    onChange={handleEmploymentHistoryChange}
                     style={{ resize: 'none' }}
                     rows={10}
                     className="block p-3 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"

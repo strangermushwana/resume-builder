@@ -9,15 +9,22 @@ import Skills from '../components/Skills'
 
 export default function Builder() {
   const [personalDetails, setPersonalDetails] = useState({})
+  const [employmentData, setEmploymentData] = useState({})
+
   const personalInformation = (info: any) => {
     setPersonalDetails(info)
   }
+
+  const emplymentInformation = (info: any) => {
+    setEmploymentData(info)
+  }
+
   return (
     <main className="flex h-screen">
       <div className="flex flex-col w-1/2 overflow-y-auto">
         <div className="flex-1 p-12">
           <PersonalDetails personalInfo={personalInformation} />
-          <EmploymentHistory />
+          <EmploymentHistory employmentData={emplymentInformation} />
           <Education />
           <Skills />
         </div>
@@ -50,7 +57,10 @@ export default function Builder() {
           </svg>
           <span className="ml-2 text-white text-xs">Saved</span>
         </div>
-        <Resume personalDetails={personalDetails} />
+        <Resume
+          personalDetails={personalDetails}
+          employmentData={employmentData}
+        />
       </div>
     </main>
   )

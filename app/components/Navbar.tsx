@@ -40,10 +40,13 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="flex space-x-6 justify-center items-center">
-          <div className="cursor-pointer uppercase text-sm hover:text-gray-900">
+          <div className="hidden cursor-pointer uppercase text-sm hover:text-gray-900">
             Dashboard
           </div>
           <div className="cursor-pointer uppercase text-sm hover:text-gray-900">
+            Templates
+          </div>
+          <div className="hidden cursor-pointer uppercase text-sm hover:text-gray-900">
             My Account
           </div>
           <div className="cursor-pointer uppercase text-sm hover:text-gray-900">
@@ -52,11 +55,20 @@ export default function Navbar() {
           <div
             className={
               active
-                ? 'cursor-pointer text-white-900 text-sm uppercase underline'
-                : 'cursor-pointer text-blue-900 text-sm uppercase underline'
+                ? 'cursor-pointer font-bold text-white-900 text-sm uppercase underline'
+                : 'cursor-pointer font-bold text-blue-900 text-sm uppercase underline'
             }
           >
             Login
+          </div>
+          <div
+            className={
+              active
+                ? 'cursor-pointer font-bold text-white-900 text-sm uppercase underline'
+                : 'cursor-pointer font-bold text-blue-900 text-sm uppercase underline'
+            }
+          >
+            Sign Up
           </div>
           {loggedIn && (
             <div

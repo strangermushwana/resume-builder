@@ -1,8 +1,34 @@
 import Link from 'next/link'
 import React from 'react'
+import { IPersonalInformation } from '../models/PersonalInformation'
+import { IEmploymentHistory } from '../models/EmploymentHistory'
 
-export default function Resume({ personalDetails }) {
-  console.log(personalDetails)
+interface Props {
+  personalDetails: IPersonalInformation
+  employmentData: IEmploymentHistory
+}
+
+export default function Resume({ personalDetails, employmentData }: Props) {
+  const showDetailsSection = () => {
+    const { phoneNumber, city, country, email } = personalDetails
+    return [!!phoneNumber, !!city, !!country, !!email].includes(true)
+  }
+  const showSection = showDetailsSection()
+
+  const showEmploymentHistorySection = () => {
+    const { jobTitle, employer, startDate, endDate, city, description } =
+      employmentData
+    return [
+      !!jobTitle,
+      !!employer,
+      !!startDate,
+      !!endDate,
+      !!city,
+      !!description,
+    ].includes(true)
+  }
+  const showEmployment = showEmploymentHistorySection()
+
   return (
     <div className="flex flex-col items-center font-mono justify-center h-full px-[7.5rem] pb-6">
       <div className="flex shadow-md w-full h-full bg-white rounded-md">
@@ -13,46 +39,52 @@ export default function Resume({ personalDetails }) {
           <div className="text-[0.5rem] pl-2 text-gray-600 uppercase">
             {personalDetails?.jobTitle}
           </div>
-          <div className="font-sans mt-3 p-2">
-            <h2 className="font-semibold text-xs my-1 font-mono text-gray-800">
-              Profile
-            </h2>
-            <div className="text-[7.5px] text-gray-700">
-              {personalDetails?.professionalSummary}
-            </div>
-          </div>
-          <div className="font-sans p-2">
-            <h2 className="font-semibold text-xs font-mono text-gray-800">
-              Employment History
-            </h2>
-            <div className="history">
-              <div className="font-sans text-[0.5rem] font-semibold my-1">
-                Vet Assistant at Capricon Animal Health, Polokwane
-              </div>
-              <div className="text-[0.4rem] font-thin mb-1 text-gray-600 uppercase">
-                May 2020 - June 2020
-              </div>
-              <div className="text-[7.5px] font-[3rem] text-gray-900">
-                Assisted vet with exams, diagnostic tests, surgery, treatment
-                procedures. performed lab tests and kept medical records
+          {personalDetails?.professionalSummary && (
+            <div className="font-sans mt-3 p-2">
+              <h2 className="font-semibold text-xs my-1 font-mono text-gray-800">
+                Profile
+              </h2>
+              <div className="text-[7.5px] text-gray-700">
+                {personalDetails.professionalSummary}
               </div>
             </div>
-            <div className="mt-2">
-              <div className="font-sans text-[0.5rem] font-semibold my-1">
-                Animal Health Technician at Agricultural Sector Educational
-                Training Authority (AgriSETA), Polokwane
+          )}
+          {showEmployment && (
+            <div className="font-sans p-2">
+              <h2 className="font-semibold text-xs font-mono text-gray-800">
+                Employment History
+              </h2>
+              <div className="history">
+                <div className="font-sans text-[0.5rem] font-semibold my-1">
+                  {employmentData?.jobTitle}
+                  {employmentData?.employer && ` at ${employmentData.employer}`}
+                  {employmentData?.city && `, ${employmentData.city}`}
+                </div>
+                <div className="text-[0.4rem] font-thin mb-1 text-gray-600 uppercase">
+                  {employmentData?.startDate} - {employmentData?.endDate}
+                </div>
+                <div className="text-[7.5px] font-[3rem] text-gray-900">
+                  {employmentData?.description}
+                </div>
               </div>
-              <div className="text-[0.4rem] font-thin mb-1 text-gray-600 uppercase">
-                March 2022 - June 2022
-              </div>
-              <div className="text-[7.5px] font-[3rem] text-gray-900">
-                I provided support to the farm by performing various tasks.
-                These included vaccinating chickens, conducting treatment
-                procedures, weighing eggs, and diligently inspecting them for
-                any potential deficiencies.
-              </div>
+              {/* <div className="mt-2">
+                <div className="font-sans text-[0.5rem] font-semibold my-1">
+                  Animal Health Technician at Agricultural Sector Educational
+                  Training Authority (AgriSETA), Polokwane
+                </div>
+                <div className="text-[0.4rem] font-thin mb-1 text-gray-600 uppercase">
+                  March 2022 - June 2022
+                </div>
+                <div className="text-[7.5px] font-[3rem] text-gray-900">
+                  I provided support to the farm by performing various tasks.
+                  These included vaccinating chickens, conducting treatment
+                  procedures, weighing eggs, and diligently inspecting them for
+                  any potential deficiencies.
+                </div>
+              </div> */}
             </div>
-          </div>
+          )}
+
           <div className="font-sans p-2">
             <h2 className="font-semibold text-xs font-mono text-gray-800">
               Education
@@ -73,7 +105,9 @@ export default function Resume({ personalDetails }) {
           </div>
         </div>
         <div className="bg-[#082A4D] w-[34%] text-white px-6 pt-[7rem] rounded-r-md">
-          <h2 className="font-semibold text-xs font-mono">Details</h2>
+          {showSection && (
+            <h2 className="font-semibold text-xs font-mono">Details</h2>
+          )}
           <div className="font-sans">
             <div className="text-[0.4rem] my-1">{personalDetails?.city}</div>
             <div className="text-[0.4rem] my-1">{personalDetails?.country}</div>
