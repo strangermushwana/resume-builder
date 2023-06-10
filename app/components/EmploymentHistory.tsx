@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Collapsed from './Collapsed'
 import UpArrow from './UI/UpArrow'
 import { IEmploymentHistory } from '../models/EmploymentHistory'
@@ -22,7 +22,9 @@ export default function EmploymentHistory({ employmentData }: Props) {
     setShow(() => !show)
   }
 
-  employmentData(employmentHistory)
+  useEffect(() => {
+    employmentData(employmentHistory)
+  })
 
   const handleEmploymentHistoryChange = (e: {
     target: { name: any; value: any }

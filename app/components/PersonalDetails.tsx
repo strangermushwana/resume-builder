@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ImageUpload from '../theme/ImageUpload'
 import { IPersonalInformation } from '../models/PersonalInformation'
 
@@ -23,7 +23,9 @@ export default function PersonalDetails({ personalInfo }: Props) {
     setOpen(() => !open)
   }
 
-  personalInfo(personalInformation)
+  useEffect(() => {
+    personalInfo(personalInformation)
+  })
 
   const handleUserDetailChange = (e: { target: { name: any; value: any } }) => {
     setPersonalInformation((info) => ({
