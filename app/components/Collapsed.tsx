@@ -1,14 +1,18 @@
 import React from 'react'
 import DownArrow from './UI/DownArrow'
 
-export default function Collapsed() {
+interface Props {
+  header: string
+}
+
+export default function Collapsed({ header }: Props) {
   return (
     <div className="flex items-center w-[99%]">
       <div className="group cursor-pointer w-full rounded-md p-4 border border-gray-300">
         <div className="flex items-center w-full justify-between">
           <div className="left">
             <div className="text-[0.8rem] group-hover:text-yellow-700 font-semibold pl-2 text-gray-900">
-              National Deploma(Soil Science)
+              {header}
             </div>
             <div className="text-[0.8rem] pl-2 my-1 text-gray-400">
               May 2020 - June 2020

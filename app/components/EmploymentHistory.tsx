@@ -35,6 +35,15 @@ export default function EmploymentHistory({ employmentData }: Props) {
     }))
   }
 
+  const constructHeader = () => {
+    return employmentHistory?.jobTitle && employmentHistory?.employer
+      ? `${employmentHistory.jobTitle} at ${employmentHistory?.employer}`
+      : employmentHistory?.jobTitle ||
+          employmentHistory?.employer ||
+          '(Not specified)'
+  }
+  const header = constructHeader()
+
   return (
     <div className="flex flex-col mt-10">
       <h2 className="text-2xl font-bold p-1">Employment History</h2>
@@ -44,7 +53,7 @@ export default function EmploymentHistory({ employmentData }: Props) {
         by Y, by doing Z).
       </label>
       <div onClick={showFull} className="mt-2">
-        {!show && <Collapsed />}
+        {!show && <Collapsed header={header} />}
       </div>
       {show && (
         <div className="flex items-center">
@@ -56,7 +65,7 @@ export default function EmploymentHistory({ employmentData }: Props) {
               >
                 <div className="left">
                   <div className="text-[0.8rem] group-hover:text-yellow-700 font-semibold pl-2 text-gray-900">
-                    National Deploma(Soil Science)
+                    {header}
                   </div>
                   <div className="text-[0.8rem] pl-2 my-1 text-gray-400">
                     May 2020 - June 2020
