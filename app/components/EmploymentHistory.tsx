@@ -3,6 +3,7 @@ import Collapsed from './Collapsed'
 import UpArrow from './UI/UpArrow'
 import { IEmploymentHistory } from '../models/EmploymentHistory'
 import Calendar from './UI/calendar/Calendar'
+import DownArrow from './UI/DownArrow'
 
 interface Props {
   employmentData: (data: IEmploymentHistory) => void
@@ -56,6 +57,10 @@ export default function EmploymentHistory({ employmentData }: Props) {
     }
   }
 
+  const addEmploymentHistory = () => {
+    console.log('adding employment history')
+  }
+
   const handleInputBlur = () => {
     setCalendarPosition('')
   }
@@ -68,13 +73,13 @@ export default function EmploymentHistory({ employmentData }: Props) {
         your achievements, if possible - use numbers/facts (Achieved X, measured
         by Y, by doing Z).
       </label>
-      <div onClick={showFull} className="mt-2">
+      {/* <div onClick={showFull} className="mt-2">
         {!show && <Collapsed header={header} />}
-      </div>
-      {show && (
+      </div> */}
+      {
         <div className="flex items-center">
           <div className="p-3 mt-2 shadow-md border-t rounded-md w-[99%]">
-            <div className="group py-2">
+            <div className="group py-2 cursor-pointer">
               <div
                 onClick={showFull}
                 className="flex items-center mx-auto group-hover:text-yellow-900 w-full justify-between"
@@ -89,113 +94,117 @@ export default function EmploymentHistory({ employmentData }: Props) {
                 </div>
                 <div className="pr-2 pb-1">
                   {' '}
-                  <UpArrow />
+                  {show ? <UpArrow /> : <DownArrow />}
                 </div>
               </div>
             </div>
-            <div className="flex">
-              <div className="p-2 w-1/2">
-                <div className="p-1">
-                  <label className="block mb-2 text-sm font-md text-gray-500">
-                    Job Title
-                  </label>
-                  <input
-                    name="jobTitle"
-                    onChange={handleEmploymentHistoryChange}
-                    type="text"
-                    className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                    placeholder="e.g. Charles"
-                  />
-                </div>
-              </div>
-              <div className="p-2 w-1/2">
-                <div className="p-1">
-                  <label className="block mb-2 text-sm font-md text-gray-500">
-                    Employer
-                  </label>
-                  <input
-                    name="employer"
-                    onChange={handleEmploymentHistoryChange}
-                    type="text"
-                    className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                    placeholder="e.g. Charles"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="flex">
-              <div className="p-2 w-1/2 relative">
-                <label className="block px-1 mb-2 text-sm font-md text-gray-500">
-                  Start & End Date
-                </label>
-                <div className="flex space-x-3 p-1">
-                  <div className="w-1/2">
-                    <input
-                      name="startDate"
-                      onChange={handleEmploymentHistoryChange}
-                      onFocus={handleShowCalendar}
-                      onBlur={handleInputBlur}
-                      type="text"
-                      className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                      placeholder="MM/YY"
-                    />
+            {show && (
+              <div className="">
+                <div className="flex">
+                  <div className="p-2 w-1/2">
+                    <div className="p-1">
+                      <label className="block mb-2 text-sm font-md text-gray-500">
+                        Job Title
+                      </label>
+                      <input
+                        name="jobTitle"
+                        onChange={handleEmploymentHistoryChange}
+                        type="text"
+                        className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+                        placeholder="e.g. Charles"
+                      />
+                    </div>
                   </div>
-                  <div className="w-1/2">
-                    <input
-                      name="endDate"
-                      onChange={handleEmploymentHistoryChange}
-                      onFocus={handleShowCalendar}
-                      onBlur={handleInputBlur}
-                      type="text"
-                      className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                      placeholder="MM/YY"
-                    />
+                  <div className="p-2 w-1/2">
+                    <div className="p-1">
+                      <label className="block mb-2 text-sm font-md text-gray-500">
+                        Employer
+                      </label>
+                      <input
+                        name="employer"
+                        onChange={handleEmploymentHistoryChange}
+                        type="text"
+                        className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+                        placeholder="e.g. Charles"
+                      />
+                    </div>
                   </div>
                 </div>
-                <div
-                  className={
-                    calendarPosition === ''
-                      ? 'hidden'
-                      : calendarPosition === 'endDate'
-                      ? 'absolute left-12 bg-white mt-1'
-                      : 'absolute bg-white mt-1'
-                  }
-                >
-                  <Calendar />
+                <div className="flex">
+                  <div className="p-2 w-1/2 relative">
+                    <label className="block px-1 mb-2 text-sm font-md text-gray-500">
+                      Start & End Date
+                    </label>
+                    <div className="flex space-x-3 p-1">
+                      <div className="w-1/2">
+                        <input
+                          name="startDate"
+                          onChange={handleEmploymentHistoryChange}
+                          onFocus={handleShowCalendar}
+                          onBlur={handleInputBlur}
+                          type="text"
+                          className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+                          placeholder="MM/YY"
+                        />
+                      </div>
+                      <div className="w-1/2">
+                        <input
+                          name="endDate"
+                          onChange={handleEmploymentHistoryChange}
+                          onFocus={handleShowCalendar}
+                          onBlur={handleInputBlur}
+                          type="text"
+                          className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+                          placeholder="MM/YY"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className={
+                        calendarPosition === ''
+                          ? 'hidden'
+                          : calendarPosition === 'endDate'
+                          ? 'absolute left-12 bg-white mt-1'
+                          : 'absolute bg-white mt-1'
+                      }
+                    >
+                      <Calendar />
+                    </div>
+                  </div>
+                  <div className="p-2 w-1/2">
+                    <div className="p-1">
+                      <label className="block mb-2 text-sm font-md text-gray-500">
+                        City
+                      </label>
+                      <input
+                        name="city"
+                        onChange={handleEmploymentHistoryChange}
+                        type="text"
+                        className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+                        placeholder="e.g. Charles"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-2">
+                  <div className="py-1">
+                    <div className="p-1">
+                      <label className="block mb-2 text-sm font-md text-gray-500">
+                        Description
+                      </label>
+                      <textarea
+                        name="description"
+                        onChange={handleEmploymentHistoryChange}
+                        style={{ resize: 'none' }}
+                        rows={10}
+                        className="block p-3 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"
+                        placeholder="e.g. Created mobile app in 30 seconds..."
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="p-2 w-1/2">
-                <div className="p-1">
-                  <label className="block mb-2 text-sm font-md text-gray-500">
-                    City
-                  </label>
-                  <input
-                    name="city"
-                    onChange={handleEmploymentHistoryChange}
-                    type="text"
-                    className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                    placeholder="e.g. Charles"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="p-2">
-              <div className="py-1">
-                <div className="p-1">
-                  <label className="block mb-2 text-sm font-md text-gray-500">
-                    Description
-                  </label>
-                  <textarea
-                    name="description"
-                    onChange={handleEmploymentHistoryChange}
-                    style={{ resize: 'none' }}
-                    rows={10}
-                    className="block p-3 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"
-                    placeholder="e.g. Created mobile app in 30 seconds..."
-                  />
-                </div>
-              </div>
-            </div>
+            )}
           </div>
           <div className="w-[1%] pl-2 ml-auto cursor-pointer">
             <svg
@@ -227,8 +236,11 @@ export default function EmploymentHistory({ employmentData }: Props) {
             </svg>
           </div>
         </div>
-      )}
-      <div className="text-[0.8rem] cursor-pointer hover:bg-red-50 font-semibold p-2 mt-3 text-yellow-900">
+      }
+      <div
+        onClick={addEmploymentHistory}
+        className="text-[0.8rem] cursor-pointer hover:bg-red-50 font-semibold p-2 mt-3 text-yellow-900"
+      >
         <span className="mr-1">+</span>Add One More Employment
       </div>
     </div>
