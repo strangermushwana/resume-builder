@@ -52,4 +52,8 @@ export default function Collapsed({ header }: Props) {
       </div>
     </div>
   )
+
+  // <Modal isOpen={true} onClose={false} customStyles={customStyles}>
+  //   <DeleteEntry />
+  // </Modal>
 }

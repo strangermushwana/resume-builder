@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import Collapsed from './Collapsed'
+import React, { useEffect, useReducer, useState } from 'react'
 import UpArrow from './UI/UpArrow'
 import DownArrow from './UI/DownArrow'
+import { INITIAL_STATE, educationReducer } from '../state/EducationReducer'
 
 export default function Education() {
-  const [show, setShow] = useState(false)
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [collapse, setCollapse] = useState(false)
   const [education, setEducation] = useState([
     {
       id: crypto.randomUUID(),
@@ -18,6 +15,11 @@ export default function Education() {
       description: '',
     },
   ])
+
+  const [educationCollapse, dispatch] = useReducer(
+    educationReducer,
+    INITIAL_STATE
+  )
 
   const handleEducationChange = (e: { target: { name: any; value: any } }) => {
     setEducation((data) => [
@@ -43,7 +45,26 @@ export default function Education() {
         description: '',
       },
     ])
-    setCollapse(true)
+    dispatch({
+      type: 'COLLAPSE',
+      payload: {
+        collapsed: true,
+        currentIndex: education.length,
+      },
+    })
+  }
+
+  const toggleEducation = (index: number) => {
+    dispatch({
+      type: 'COLLAPSE',
+      payload: {
+        collapsed:
+          index === educationCollapse.currentIndex
+            ? !educationCollapse.collapsed
+            : true,
+        currentIndex: index,
+      },
+    })
   }
 
   const setHeader = (index: number): string => {
@@ -55,16 +76,9 @@ export default function Education() {
           '(Not specified)'
   }
 
-  useEffect(() => {
-    console.log(collapse, currentIndex, education.length - 1)
-    // setCurrentIndex(() => (collapse ? education.length - 1 : currentIndex))
-  }, [education, show, collapse, currentIndex])
+  useEffect(() => {})
 
-  const toggleView = (index: number): undefined => {
-    setShow((prevShow) => !prevShow)
-    setCollapse(() => index !== currentIndex)
-    setCurrentIndex(() => index)
-  }
+  console.log('educationCollapse ', educationCollapse)
 
   return (
     <div className="flex flex-col mt-4">
@@ -79,7 +93,7 @@ export default function Education() {
             <div className="flex items-center">
               <div className="p-3 mt-2 shadow-md w-full border-t rounded-md">
                 <div
-                  onClick={() => toggleView(index)}
+                  onClick={() => toggleEducation(index)}
                   className="group py-2 cursor-pointer"
                 >
                   <div className="flex items-center mx-auto group-hover:text-yellow-900 w-full justify-between">
@@ -93,7 +107,8 @@ export default function Education() {
                     </div>
                     <div className="pr-2 pb-1">
                       {' '}
-                      {collapse && currentIndex === index ? (
+                      {educationCollapse?.collapsed &&
+                      educationCollapse?.currentIndex === index ? (
                         <UpArrow />
                       ) : (
                         <DownArrow />
@@ -101,98 +116,99 @@ export default function Education() {
                     </div>
                   </div>
                 </div>
-                {collapse && currentIndex === index && (
-                  <div>
-                    <div className="flex">
-                      <div className="p-2 w-1/2">
-                        <div className="p-1">
-                          <label className="block mb-2 text-sm font-md text-gray-500">
-                            School
-                          </label>
-                          <input
-                            name="school"
-                            onChange={handleEducationChange}
-                            type="text"
-                            className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                            placeholder="e.g. University of Mars"
-                          />
-                        </div>
-                      </div>
-                      <div className="p-2 w-1/2">
-                        <div className="p-1">
-                          <label className="block mb-2 text-sm font-md text-gray-500">
-                            Degree
-                          </label>
-                          <input
-                            name="qualification"
-                            onChange={handleEducationChange}
-                            type="text"
-                            className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                            placeholder="Bsc. Space Science"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="p-2 w-1/2">
-                        <label className="block px-1 mb-2 text-sm font-md text-gray-500">
-                          Start & End Date
-                        </label>
-                        <div className="flex space-x-3 p-1">
-                          <div className="w-1/2">
+                {educationCollapse?.collapsed &&
+                  educationCollapse?.currentIndex === index && (
+                    <div>
+                      <div className="flex">
+                        <div className="p-2 w-1/2">
+                          <div className="p-1">
+                            <label className="block mb-2 text-sm font-md text-gray-500">
+                              School
+                            </label>
                             <input
-                              name="startDate"
+                              name="school"
                               onChange={handleEducationChange}
                               type="text"
                               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                              placeholder="MM/YY"
+                              placeholder="e.g. University of Mars"
                             />
                           </div>
-                          <div className="w-1/2">
+                        </div>
+                        <div className="p-2 w-1/2">
+                          <div className="p-1">
+                            <label className="block mb-2 text-sm font-md text-gray-500">
+                              Degree
+                            </label>
                             <input
-                              name="endDate"
+                              name="qualification"
                               onChange={handleEducationChange}
                               type="text"
                               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                              placeholder="MM/YY"
+                              placeholder="Bsc. Space Science"
                             />
                           </div>
                         </div>
                       </div>
-                      <div className="p-2 w-1/2">
-                        <div className="p-1">
-                          <label className="block mb-2 text-sm font-md text-gray-500">
-                            City
+                      <div className="flex">
+                        <div className="p-2 w-1/2">
+                          <label className="block px-1 mb-2 text-sm font-md text-gray-500">
+                            Start & End Date
                           </label>
-                          <input
-                            name="city"
-                            onChange={handleEducationChange}
-                            type="text"
-                            className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                            placeholder="e.g. Charles"
-                          />
+                          <div className="flex space-x-3 p-1">
+                            <div className="w-1/2">
+                              <input
+                                name="startDate"
+                                onChange={handleEducationChange}
+                                type="text"
+                                className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+                                placeholder="MM/YY"
+                              />
+                            </div>
+                            <div className="w-1/2">
+                              <input
+                                name="endDate"
+                                onChange={handleEducationChange}
+                                type="text"
+                                className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+                                placeholder="MM/YY"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="p-2 w-1/2">
+                          <div className="p-1">
+                            <label className="block mb-2 text-sm font-md text-gray-500">
+                              City
+                            </label>
+                            <input
+                              name="city"
+                              onChange={handleEducationChange}
+                              type="text"
+                              className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
+                              placeholder="e.g. Charles"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-2">
+                        <div className="py-1">
+                          <div className="p-1">
+                            <label className="block mb-2 text-sm font-md text-gray-500">
+                              Description
+                            </label>
+                            <textarea
+                              name="description"
+                              onChange={handleEducationChange}
+                              style={{ resize: 'none' }}
+                              rows={10}
+                              className="block p-3 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"
+                              placeholder="e.g. Graduated under 30 seconds..."
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div className="p-2">
-                      <div className="py-1">
-                        <div className="p-1">
-                          <label className="block mb-2 text-sm font-md text-gray-500">
-                            Description
-                          </label>
-                          <textarea
-                            name="description"
-                            onChange={handleEducationChange}
-                            style={{ resize: 'none' }}
-                            rows={10}
-                            className="block p-3 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"
-                            placeholder="e.g. Graduated under 30 seconds..."
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                  )}
               </div>
               <div className="w-[1%] pl-2 ml-auto cursor-pointer">
                 <svg

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ImageUpload from '../theme/ImageUpload'
 import { IPersonalInformation } from '../models/PersonalInformation'
-import Modal from '../theme/Modal'
-import DeleteEntry from './UI/DeleteEntry'
 
 interface Props {
   personalInfo: (data: IPersonalInformation) => void
@@ -50,9 +48,6 @@ export default function PersonalDetails({ personalInfo }: Props) {
 
   return (
     <div className="flex flex-col">
-      <Modal isOpen={true} onClose={false} customStyles={customStyles}>
-        <DeleteEntry />
-      </Modal>
       <h2 className="text-2xl font-bold p-1">Personal Details</h2>
       <div className="flex pt-1">
         <div className="p-2 w-1/2">
