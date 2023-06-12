@@ -6,6 +6,7 @@ import DownArrow from './UI/DownArrow'
 export default function Education() {
   const [show, setShow] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [collapse, setCollapse] = useState(false)
   const [education, setEducation] = useState([
     {
       id: crypto.randomUUID(),
@@ -42,7 +43,7 @@ export default function Education() {
         description: '',
       },
     ])
-    setShow(true)
+    setCollapse(true)
   }
 
   const setHeader = (index: number): string => {
@@ -55,12 +56,13 @@ export default function Education() {
   }
 
   useEffect(() => {
-    setCurrentIndex(education.length - 1)
-  }, [education, show])
+    console.log(collapse, currentIndex, education.length - 1)
+    // setCurrentIndex(() => (collapse ? education.length - 1 : currentIndex))
+  }, [education, show, collapse, currentIndex])
 
-  const showFull = (index: number): undefined => {
-    console.log('index index ', index)
+  const toggleView = (index: number): undefined => {
     setShow((prevShow) => !prevShow)
+    setCollapse(() => index !== currentIndex)
     setCurrentIndex(() => index)
   }
 
@@ -73,17 +75,14 @@ export default function Education() {
       </label>
       {education.map((edu, index) => (
         <div key={edu.id}>
-          {/* <div onClick={() => showFull(index)} className="mt-2">
-            {currentIndex !== index && <Collapsed header={setHeader(index)} />}
-          </div> */}
           {
             <div className="flex items-center">
               <div className="p-3 mt-2 shadow-md w-full border-t rounded-md">
-                <div className="group py-2 cursor-pointer">
-                  <div
-                    onClick={() => showFull(index)}
-                    className="flex items-center mx-auto group-hover:text-yellow-900 w-full justify-between"
-                  >
+                <div
+                  onClick={() => toggleView(index)}
+                  className="group py-2 cursor-pointer"
+                >
+                  <div className="flex items-center mx-auto group-hover:text-yellow-900 w-full justify-between">
                     <div className="left">
                       <div className="text-[0.8rem] group-hover:text-yellow-700 font-semibold pl-2 text-gray-900">
                         {setHeader(index)}
@@ -94,11 +93,15 @@ export default function Education() {
                     </div>
                     <div className="pr-2 pb-1">
                       {' '}
-                      {show ? <UpArrow /> : <DownArrow />}
+                      {collapse && currentIndex === index ? (
+                        <UpArrow />
+                      ) : (
+                        <DownArrow />
+                      )}
                     </div>
                   </div>
                 </div>
-                {show && currentIndex === index && (
+                {collapse && currentIndex === index && (
                   <div>
                     <div className="flex">
                       <div className="p-2 w-1/2">
