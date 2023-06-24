@@ -1,9 +1,14 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import UpArrow from './UI/UpArrow'
 import DownArrow from './UI/DownArrow'
-import { INITIAL_STATE, educationReducer } from '../state/EducationReducer'
+import { INITIAL_STATE, collapsableReducer } from '../state/CollapsableReducer'
+import {
+  EDUCATION_INITIAL_STATE,
+  educationReducer,
+} from '../state/EducationReducer'
 
 export default function Education() {
+  const [current, setCurrent] = useState('')
   const [education, setEducation] = useState([
     {
       id: crypto.randomUUID(),
@@ -17,20 +22,35 @@ export default function Education() {
   ])
 
   const [educationCollapse, dispatch] = useReducer(
-    educationReducer,
+    collapsableReducer,
     INITIAL_STATE
   )
 
-  const handleEducationChange = (e: { target: { name: any; value: any } }) => {
-    setEducation((data) => [
-      ...data.map((ed) => {
-        return {
-          ...ed,
-          [e.target.name]: e.target.value,
-        }
-      }),
-    ])
+  const [educationUpdate, educationUpdateDispatch] = useReducer(
+    educationReducer,
+    EDUCATION_INITIAL_STATE
+  )
+
+  const handleEducationChange = (
+    index: number,
+    e: { target: { name: any; value: any } }
+  ) => {
+    educationUpdateDispatch({
+      type: 'UPDATE_EDUCATION',
+      payload: {
+        index,
+        newValue: { [e.target.name]: e.target.value },
+      },
+    })
+    setEducation((data: any) => {
+      const selected = data[index]
+      let temp = [...data]
+      temp[index] = { ...selected, [e.target.name]: e.target.value }
+      return temp
+    })
   }
+
+  console.log(education)
 
   const addEducation = () => {
     setEducation((data) => [
@@ -77,8 +97,6 @@ export default function Education() {
   }
 
   useEffect(() => {})
-
-  console.log('educationCollapse ', educationCollapse)
 
   return (
     <div className="flex flex-col mt-4">
@@ -127,7 +145,7 @@ export default function Education() {
                             </label>
                             <input
                               name="school"
-                              onChange={handleEducationChange}
+                              onChange={(e) => handleEducationChange(index, e)}
                               type="text"
                               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                               placeholder="e.g. University of Mars"
@@ -141,7 +159,7 @@ export default function Education() {
                             </label>
                             <input
                               name="qualification"
-                              onChange={handleEducationChange}
+                              onChange={(e) => handleEducationChange(index, e)}
                               type="text"
                               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                               placeholder="Bsc. Space Science"
@@ -158,19 +176,23 @@ export default function Education() {
                             <div className="w-1/2">
                               <input
                                 name="startDate"
-                                onChange={handleEducationChange}
+                                onChange={(e) =>
+                                  handleEducationChange(index, e)
+                                }
                                 type="text"
                                 className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                                placeholder="MM/YY"
+                                placeholder="MM/YYYY"
                               />
                             </div>
                             <div className="w-1/2">
                               <input
                                 name="endDate"
-                                onChange={handleEducationChange}
+                                onChange={(e) =>
+                                  handleEducationChange(index, e)
+                                }
                                 type="text"
                                 className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                                placeholder="MM/YY"
+                                placeholder="MM/YYYY"
                               />
                             </div>
                           </div>
@@ -182,7 +204,7 @@ export default function Education() {
                             </label>
                             <input
                               name="city"
-                              onChange={handleEducationChange}
+                              onChange={(e) => handleEducationChange(index, e)}
                               type="text"
                               className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
                               placeholder="e.g. Charles"
@@ -198,7 +220,7 @@ export default function Education() {
                             </label>
                             <textarea
                               name="description"
-                              onChange={handleEducationChange}
+                              onChange={(e) => handleEducationChange(index, e)}
                               style={{ resize: 'none' }}
                               rows={10}
                               className="block p-3 w-full text-sm text-gray-900 bg-gray-100 outline-none focus:border-b-2"

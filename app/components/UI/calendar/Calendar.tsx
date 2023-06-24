@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function Calendar() {
+interface Props {
+  calendarPosition: string
+}
+
+export default function Calendar({ calendarPosition }: Props) {
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
   const months = [
     'Jan',
     'Feb',
@@ -15,10 +20,21 @@ export default function Calendar() {
     'Nov',
     'Dec',
   ]
+
+  const handleYearChange = (side: number) => {
+    if (side === -1) {
+      return setCurrentYear((prev) => prev - 1)
+    }
+    return setCurrentYear((prev) => prev + 1)
+  }
+
   return (
     <div className="max-w-[250px] shadow-md p-2 rounded-lg flex flex-col">
       <div className="flex items-center justify-between">
-        <div className="cursor-pointer group">
+        <div
+          onClick={() => handleYearChange(-1)}
+          className="cursor-pointer group"
+        >
           <svg
             width="32"
             height="32"
@@ -34,9 +50,12 @@ export default function Calendar() {
           </svg>
         </div>
         <div className="bg-blue-500 px-3 py-2 text-white rounded-full">
-          2021
+          {currentYear}
         </div>
-        <div className="cursor-pointer group">
+        <div
+          onClick={() => handleYearChange(1)}
+          className="cursor-pointer group"
+        >
           <svg
             width="32"
             height="32"
@@ -52,25 +71,27 @@ export default function Calendar() {
           </svg>
         </div>
       </div>
-      <div className="mt-3 max-w-[250px] grid grid-cols-4">
+      <div className="mt-3 pr-3 max-w-[250px] grid grid-cols-4">
         {months.map((month: string) => (
           <div
             key={month}
-            className="px-3 cursor-pointer py-2 hover:bg-blue-200 hover:text-blue-600 text-gray-800 rounded-full w-fit"
+            className="px-[20px] cursor-pointer py-2 hover:bg-blue-200 hover:text-blue-600 text-gray-800 rounded-full w-fit"
           >
             {month}
           </div>
         ))}
       </div>
-      <div className="max-w-[250px] pl-3 mt-2">
-        <label className="relative inline-flex items-center mb-4 cursor-pointer">
-          <input type="checkbox" value="" className="sr-only peer" />
-          <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-          <span className="ml-2 text-sm text-gray-500">
-            Currently work here
-          </span>
-        </label>
-      </div>
+      {calendarPosition === 'endDate' && (
+        <div className="max-w-[250px] pl-3 mt-2">
+          <label className="relative inline-flex items-center mb-4 cursor-pointer">
+            <input type="checkbox" value="" className="sr-only peer" />
+            <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <span className="ml-2 text-sm text-gray-500">
+              Currently work here
+            </span>
+          </label>
+        </div>
+      )}
     </div>
   )
 }

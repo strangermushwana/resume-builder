@@ -73,9 +73,6 @@ export default function EmploymentHistory({ employmentData }: Props) {
         your achievements, if possible - use numbers/facts (Achieved X, measured
         by Y, by doing Z).
       </label>
-      {/* <div onClick={showFull} className="mt-2">
-        {!show && <Collapsed header={header} />}
-      </div> */}
       {
         <div className="flex items-center">
           <div className="p-3 mt-2 shadow-md border-t rounded-md w-[99%]">
@@ -141,10 +138,10 @@ export default function EmploymentHistory({ employmentData }: Props) {
                           name="startDate"
                           onChange={handleEmploymentHistoryChange}
                           onFocus={handleShowCalendar}
-                          onBlur={handleInputBlur}
+                          // onBlur={handleInputBlur}
                           type="text"
                           className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                          placeholder="MM/YY"
+                          placeholder="MM/YYYY"
                         />
                       </div>
                       <div className="w-1/2">
@@ -152,10 +149,10 @@ export default function EmploymentHistory({ employmentData }: Props) {
                           name="endDate"
                           onChange={handleEmploymentHistoryChange}
                           onFocus={handleShowCalendar}
-                          onBlur={handleInputBlur}
+                          // onBlur={handleInputBlur}
                           type="text"
                           className="text-black bg-gray-100 text-sm outline-none focus:border-b-2 block w-full p-3"
-                          placeholder="MM/YY"
+                          placeholder="MM/YYYY"
                         />
                       </div>
                     </div>
@@ -168,7 +165,7 @@ export default function EmploymentHistory({ employmentData }: Props) {
                           : 'absolute bg-white mt-1'
                       }
                     >
-                      <Calendar />
+                      <Calendar calendarPosition={calendarPosition} />
                     </div>
                   </div>
                   <div className="p-2 w-1/2">
