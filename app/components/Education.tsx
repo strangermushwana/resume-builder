@@ -50,7 +50,10 @@ export default function Education() {
     })
   }
 
-  console.log(education)
+  const deleteEducation = (index: number) => {
+    console.log('deleting ', index)
+    setEducation(() => [...education].filter((ed, i) => index !== i))
+  }
 
   const addEducation = () => {
     setEducation((data) => [
@@ -232,7 +235,10 @@ export default function Education() {
                     </div>
                   )}
               </div>
-              <div className="w-[1%] pl-2 ml-auto cursor-pointer">
+              <div
+                className="w-[1%] pl-2 ml-auto cursor-pointer"
+                onClick={() => deleteEducation(index)}
+              >
                 <svg
                   id="SvgjsSvg1053"
                   width="20"
