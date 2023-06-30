@@ -8,7 +8,6 @@ import {
 } from '../state/EducationReducer'
 
 export default function Education() {
-  const [current, setCurrent] = useState('')
   const [education, setEducation] = useState([
     {
       id: crypto.randomUUID(),
@@ -51,7 +50,6 @@ export default function Education() {
   }
 
   const deleteEducation = (index: number) => {
-    console.log('deleting ', index)
     setEducation(() => [...education].filter((ed, i) => index !== i))
   }
 

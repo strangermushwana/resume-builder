@@ -34,22 +34,10 @@ export default function PersonalDetails({ personalInfo }: Props) {
     }))
   }
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      maxWidth: '540px',
-    },
-  }
-
   return (
     <div className="flex flex-col">
       <h2 className="text-2xl font-bold p-1">Personal Details</h2>
-      <div className="flex pt-1">
+      <div className="flex items-center pt-1">
         <div className="p-2 w-1/2">
           <div className="p-1">
             <label className="block mb-2 text-sm font-md text-gray-500">
@@ -64,14 +52,14 @@ export default function PersonalDetails({ personalInfo }: Props) {
             />
           </div>
         </div>
-        {/* <div className="p-2 w-1/2">
+        <div className="p-2 mt-6 w-1/2 cursor-pointer">
           <div className="p-1">
             <div onClick={openFn} className="group flex items-center space-x-2">
-              <div className="bg-gray-100 group-hover:bg-yellow-200 rounded-md w-fit p-4">
+              <div className="bg-gray-100 group-hover:bg-gray-200 rounded-md w-fit p-4">
                 <svg
                   id="SvgjsSvg1072"
-                  width="20"
-                  height="20"
+                  width="16"
+                  height="16"
                   xmlns="http://www.w3.org/2000/svg"
                   version="1.1"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -81,8 +69,8 @@ export default function PersonalDetails({ personalInfo }: Props) {
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 32 32"
-                      width="20"
-                      height="20"
+                      width="16"
+                      height="16"
                     >
                       <path
                         fill="#7d7d7d"
@@ -96,7 +84,7 @@ export default function PersonalDetails({ personalInfo }: Props) {
               <div className="text-sm">Upload Photo</div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="flex">
         <div className="p-2 w-1/2">

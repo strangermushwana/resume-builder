@@ -2,8 +2,19 @@ import React from 'react'
 import Modal from '../theme/Modal'
 
 export default function ImageUpload() {
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      maxWidth: '540px',
+    },
+  }
   return (
-    <Modal isOpen={true} onClose={false}>
+    <Modal isOpen={true} onClose={false} customStyles={customStyles}>
       <div className="flex items-center justify-center w-full">
         <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100">
           <div className="flex flex-col items-center justify-center pt-5 pb-6">

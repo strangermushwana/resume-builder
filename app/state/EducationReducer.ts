@@ -13,8 +13,12 @@ export const EDUCATION_INITIAL_STATE = [
 export const educationReducer = (currentState: any, action: any) => {
   switch(action.type) {
     case 'UPDATE_EDUCATION':
-      const changed = currentState.splice(action.payload.index, 1)
-      return [...currentState, {...changed[0], ...action.payload.newValue}]
+      const selected = currentState[action.payload.index]
+      let temp = [...currentState]
+      temp[action.payload.index] = { ...selected, ...action.payload.newValue }
+      return temp
+    case 'ADD_EDUCATION':
+      return [...action.payload.education]
     default:
       return currentState
   }

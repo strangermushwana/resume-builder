@@ -10,7 +10,7 @@ export default function Skills() {
   }
   return (
     <div className="flex flex-col mt-4">
-      <h2 className="text-2xl font-bold p-1">SKills</h2>
+      <h2 className="text-2xl font-bold p-1">Skills</h2>
       <label className="block mb-2 text-sm p-1 font-sm text-gray-600">
         Choose 5 important skills that show you fit the position. Make sure they
         match the key skills mentioned in the job listing (especially when
